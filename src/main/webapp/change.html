@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="logincss.css" />
+    <meta charset="UTF-8">
+    <title>forgot password</title>
+</head>
+<body>
+<script>
+
+function validateEmail()
+{ var email= document.getElementById("femail").value;
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+  {
+  ajax(email);
+  }
+ else
+ {	 alert("You have entered an invalid email address!");
+    return false;
+}}
+
+function ajax(email) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      resp = this.responseText;
+     if(resp.includes("exist")){
+    window.location.replace("/push?email="+email)
+   }
+ else if(resp.includes("new")){
+           document.getElementById("disp").innerText="Email you have given does not exist";
+            }}
+
+ };
+xhttp.open("POST","/signup",true);
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhttp.send("fname="+"none"+"&fpassword="+"none"+"&femail="+email);}
+
+</script>
+<div align="center" style="position: absolute;top: 50%; left: 50%;transform: translate(-50%, -50%);">
+UserEmail:<br>
+    <input type="text"  placeholder="Enter email" id="femail" ><br>
+<input type="button" value="submit"  onclick="validateEmail()" style="width: 80px; height: 40px;">
+ <br>   <p id="disp" align="center"></p></div>
+</body>
+</html>

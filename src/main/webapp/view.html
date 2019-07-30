@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="logincss.css" />
+
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <script src="view.js">
+</script>
+</head>
+<body onload="recept()">
+<div class="header">
+    <a  class="logo" >Trello</a>
+    <div class="header-right">
+        <a onclick=" window.location.replace('/logout')" id="tag" style="cursor:pointer;">Logout</a>
+    </div>
+</div>
+<input type="button" id="bt" onclick="checkNumber()" style="cursor:pointer;text-align:center;"value="+ addDetails"/>
+<input type="button" id="save" onclick="save()" style="cursor:pointer;text-align:center;"value="save"/>
+<p id="demo" align="center"></p>
+</body>
+</html>

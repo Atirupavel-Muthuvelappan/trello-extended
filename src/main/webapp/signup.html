@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>signup</title>
+    <link rel="stylesheet" type="text/css" href="logincss.css" />
+</head>
+
+<body>
+<script src="script.js"></script>
+<div class="header">
+    <a  class="logo" >Trello</a>
+    <div class="header-right">
+        <a href="login.html" id="tag">Login</a>
+    </div>
+</div>
+<div class="textbox" align="center">
+      <table><tr>
+          <td>Name:</td><td><input  type="text" placeholder="Name" id="fname" ></td></tr>
+          <tr> <td>Password:</td><td><input id="fpassword"placeholder="Password" type="password" ></td></tr>
+          <tr>  <td>Email:</td><td><input id="femail" placeholder="Email" type="text" ></td></tr>
+          <tr><td></td><td>
+              <input type="button" onclick="validateForm()" style="cursor:pointer;text-align:center;"value="Signup" ></td></tr>
+      </table></div>
+<br>
+<strong><p id="disp" align="center"></p></strong><br>
+
+</body>
+</html>

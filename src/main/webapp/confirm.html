@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="logincss.css"/>
+</head>
+<body>
+<script>
+function validateName() {
+   name =  document.getElementById("fname").value;
+   if (name) {
+    return true;
+  }
+alert("Name must be filled out!");
+      return false;}
+   function validatePassword(){
+     password = document.getElementById("fpassword").value;
+    if (password) {
+      if(password.length>7){
+        var re = /(?=.*\d)(?=.*[* | & | # | @ | $ | %])/;
+       if(re.test(password) )
+        {
+        return true;}
+        else window.alert("The password should contain atleast one special character and a number");
+      }
+      else{
+      window.alert("The password should be atleast minimum of 8 characters");return false;}}
+      else{  window.alert("Password must be filled out");
+return false; }}
+
+function validate(){
+if(validateName() ){if(validatePassword()){
+    var pass= document.getElementById("fpassword").value;
+   var cpass=document.getElementById("fcpassword").value;
+   var name= document.getElementById("fname").value;
+ if(cpass==pass)
+   {var location=window.location.href;
+   var index=location.indexOf("=");
+   var email=location.substring(index+1);
+   ajax(pass,name,email);}
+   else
+   alert("The passwords entered dosen't match");}
+   function ajax(pass,name,email) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 201) {
+
+           window.location.replace("login.html") ; }
+};
+xhttp.open("POST","/changepassword",true);
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhttp.send("fpassword="+pass+"&fname="+name+"&femail="+email);}
+}}
+
+</script>
+
+<div class="header">
+    <a class="logo">Trello</a>
+    <div class="header-right">
+        <a href="signup.html" id="tag">Signup</a>
+    </div>
+</div>
+<div class="textbox" align="center">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" placeholder="Enter name" id="fname"></td>
+        </tr>
+        <tr>
+            <td>New Password:</td>
+            <td><input id="fcpassword" placeholder="Enter password" type="password"></td>
+        </tr>
+        <tr>
+            <td>Confirm Password:</td>
+            <td><input id="fpassword" placeholder="Confirm password" type="password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" onclick="validate()" style="cursor:pointer;text-align:center;" value="confirm">
+            </td>
+        </tr>
+    </table>
+
+    <br>
+</div>
+</body>
+</html>
